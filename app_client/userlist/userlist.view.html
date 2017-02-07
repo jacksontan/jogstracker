@@ -37,7 +37,7 @@
           <label class="col-sm-3 control-label">Account Type</label>
           <p class="form-control-static" ng-hide="user.editorEnabled" >{{ user.accountType }} - {{ user.accountType === "1" ? "Admin" : user.accountType === "2" ? "Manager" : "User"}}</p>
 			<span class="col-sm-9" ng-show="user.editorEnabled" >
-				<select type="text" class="form-control" ng-model="user.accountType">
+				<select type="text" class="form-control" ng-model="user.tempData.accountType">
 					<option value="1">1 - Admin</option>
 					<option value="2">2 - Manager</option>
 					<option value="3">3 - User</option>

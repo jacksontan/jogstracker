@@ -7,14 +7,24 @@
   meanData.$inject = ['$http', 'authentication'];
   function meanData ($http, authentication) {
 	$http.defaults.headers.common.Authorization = 'Bearer '+ authentication.getToken();
+	var formatQueryParams = function(fromDate, toDate){
+		var queryParams = "?";
+		if(fromDate){
+			queryParams += "&fromDate=" + fromDate;
+		}
+		if(toDate){
+			queryParams += "&toDate=" + toDate;
+		}
+		return queryParams;
+	};
     var getProfile = function () {
       return $http.get('/api/profile');
     };
-	var getJogsList = function () {
-      return $http.get('/api/jogs');
+	var getJogsList = function (fromDate, toDate) {
+		return $http.get('/api/jogs' + formatQueryParams(fromDate, toDate));
     };
-	var getJogsByAccountType = function (accountType) {
-      return $http.get('/api/jogs/accountType/' + accountType);
+	var getJogsByAccountType = function (accountType, fromDate, toDate) {
+      return $http.get('/api/jogs/accountType/' + accountType + formatQueryParams(fromDate, toDate));
     };
 	var getReports = function () {
       return $http.get('/api/jogs/reports');
