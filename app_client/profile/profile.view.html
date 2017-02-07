@@ -1,0 +1,38 @@
+<navigation></navigation>
+
+<div class="container">
+  <div class="row">
+    
+     <div class="col-md-6">
+
+      <h1 class="form-signin-heading">Your profile</h1>
+
+      <form  class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Full name</label>
+          <p class="form-control-static">{{ vm.user.name }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Email</label>
+          <p class="form-control-static">{{ vm.user.email }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Acount Type</label>
+          <p class="form-control-static">{{ vm.user.accountTypeLabel }}</p>
+        </div>
+      </form>
+	  <span>
+		<a href="jogslist">Jogs List</a>
+	  </span>
+	  <span>
+	  |
+		<a href="reports">Reports</a>
+	  </span>
+	  <span ng-show="vm.user.accountType === 1 || vm.user.accountType === 2">
+	  |
+		<a href="userlist">User List</a>
+	  </span>
+    </div>
+
+  </div>
+</div>

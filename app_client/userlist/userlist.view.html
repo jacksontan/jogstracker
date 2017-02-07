@@ -1,0 +1,52 @@
+<navigation></navigation>
+
+<div class="container">
+  <div class="row">
+    
+     <div class="col-md-12">
+
+      <h1 class="form-signin-heading">User List</h1>
+
+      <form  class="form-horizontal" ng-repeat="(key, user) in vm.users">
+		<hr/>
+		<div class="row text-right">
+		
+			<a href="#" title="Save" ng-show="user.editorEnabled" ng-click="vm.updateUser(user, $index)">
+			  <span class="glyphicon glyphicon-ok lead"></span>
+			</a>
+			<a href="#" title="Cancel" ng-show="user.editorEnabled" ng-click="vm.disableEditor(user, $index)">
+			  <span class="glyphicon glyphicon-remove lead"></span>
+			</a>
+			
+			<a href="#" title="Edit Record" ng-hide="user.editorEnabled" ng-click="vm.enableEditor(user)">
+			  <span class="glyphicon glyphicon-pencil lead"></span>
+			</a>
+		</div>
+        <div class="form-group">
+			<label class="col-sm-3 control-label">Full name</label>
+			<p class="form-control-static"  ng-hide="user.editorEnabled">{{ user.name }}</p>
+			<span class="col-sm-9" ng-show="user.editorEnabled" >
+				<input type="text" class="form-control" ng-model="user.tempData.name"></input>
+			</span>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Email</label>
+          <p class="form-control-static">{{ user.email }}</p>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Account Type</label>
+          <p class="form-control-static" ng-hide="user.editorEnabled" >{{ user.accountType }} - {{ user.accountType === "1" ? "Admin" : user.accountType === "2" ? "Manager" : "User"}}</p>
+			<span class="col-sm-9" ng-show="user.editorEnabled" >
+				<select type="text" class="form-control" ng-model="user.accountType">
+					<option value="1">1 - Admin</option>
+					<option value="2">2 - Manager</option>
+					<option value="3">3 - User</option>
+				</select>
+			</span>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

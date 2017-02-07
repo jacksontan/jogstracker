@@ -1,0 +1,131 @@
+<navigation></navigation>
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-12">
+
+		<h1 class="form-signin-heading">Jogs List</h1>
+		<form  class="form-horizontal" ng-submit="vm.onSubmit()">
+			<div class="row">
+				<hr/>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Date</label>
+						<span class="col-sm-9">
+							<input class="form-control ng-valid-date" placeholder="Date" ng-model="vm.jog.date"></input>
+						</span>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Time</label>
+						<span class="col-sm-9">
+							<input class="form-control ng-valid-number" placeholder="Time" ng-model="vm.jog.time"></input>
+						</span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Distance</label>
+						<span class="col-sm-9">
+							<input class="form-control ng-valid-number" placeholder="Distance" ng-model="vm.jog.distance"></input>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row text-center">
+				<button type="submit" class="btn btn-default">Create</button>
+			</div>
+		</form>
+		<h1>Date Filter</h1><hr/>
+		<form  class="form-horizontal">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">From</label>
+						<span class="col-sm-4">
+							<input class="form-control" placeholder="Enter Date" ng-model="vm.jog.date"></input>
+						</span>
+						<label class="col-sm-1 control-label">To</label>
+						<span class="col-sm-4">
+							<input class="form-control" placeholder="Enter Date" ng-model="vm.jog.distance"></input>
+						</span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+					</div>
+				</div>
+			</div>
+			<div class="row text-center">
+				<button type="submit" class="btn btn-default">Filter</button>
+			</div>
+		</form>
+		<form  class="form-horizontal" ng-repeat="(key1, jogsets) in vm.jogs">
+			<hr/>
+			<span>
+				<h1>{{jogsets.title}}</h1>
+			</span>
+			<span ng-repeat="(key2, jogset) in jogsets">
+				<div class="row">
+					<hr/>
+				</div>
+				<div class="row text-right">
+				
+					<a href="#" title="Save" ng-show="jogset.editorEnabled" ng-click="vm.updateJog(jogset, key1, key2)">
+					  <span class="glyphicon glyphicon-ok lead"></span>
+					</a>
+					<a href="#" title="Cancel" ng-show="jogset.editorEnabled" ng-click="vm.disableEditor(jogset)">
+					  <span class="glyphicon glyphicon-remove lead"></span>
+					</a>
+					
+					<a href="#" title="Edit Record" ng-hide="jogset.editorEnabled" ng-click="vm.enableEditor(jogset)">
+					  <span class="glyphicon glyphicon-pencil lead"></span>
+					</a>
+					<a href="#" title="Delete Record" ng-hide="jogset.editorEnabled" ng-confirm-click="Are you sure you want to delete this record?" confirmed-click="vm.deleteJog('{{jogset._id}}')">
+					  <span class="glyphicon glyphicon-remove-circle lead"></span>
+					</a>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Date</label>
+							<p class="form-control-static" ng-hide="jogset.editorEnabled" >{{ jogset.date }}</p>
+							<span class="col-sm-9" ng-show="jogset.editorEnabled" >
+								<input type="text" class="form-control" ng-model="jogset.date"></input>
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Time</label>
+							<p class="form-control-static" ng-hide="jogset.editorEnabled" >{{ jogset.time }}</p>
+							<span class="col-sm-9" ng-show="jogset.editorEnabled" >
+								<input type="text" class="form-control" ng-model="jogset.time"></input>
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Distance</label>
+							<p class="form-control-static" ng-hide="jogset.editorEnabled" >{{ jogset.distance }}</p>
+							<span class="col-sm-9" ng-show="jogset.editorEnabled" >
+								<input type="text" class="form-control" ng-model="jogset.distance"></input>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Speed</label>
+							<p class="form-control-static">{{ jogset.speed }}</p>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Name</label>
+							<p class="form-control-static">{{ jogset.name }}</p>
+						</div>
+					</div>
+				</div>
+			</span>
+		</form>
+
+		</div>
+
+	</div>
+</div>
