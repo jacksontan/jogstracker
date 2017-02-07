@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
 //var dbURI = 'mongodb://localhost/joggersdb';
-//var dbURI = 'mongodb://jacksontan:jacksontan@ds056789.mlab.com:56789/joggersdb'
-var dbURI = process.env.PROD_MONGODB;
-if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI;
-}
-
+var dbURI = 'mongodb://jacksontan:jacksontan@ds056789.mlab.com:56789/joggersdb'
+//var dbURI = process.env.PROD_MONGODB;
+//if (process.env.NODE_ENV === 'production') {
+//  dbURI = process.env.MONGOLAB_URI;
+//}
+console.log(dbURI);
 mongoose.connect(dbURI);
 
 // CONNECTION EVENTS
