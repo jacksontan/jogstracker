@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var dateFormat = require('dateFormat');
+//var dateFormat = require('dateFormat');
 var User = mongoose.model('User');
 var Jog = mongoose.model('Jog');
 var ObjectId = mongoose.Types.ObjectId;
@@ -18,7 +18,7 @@ var formatJogsWithUser = function(jogs, user){
 			_id: jogModel._id,
 			user_id: jogModel.user_id._id,
 			name: user ? user.name : jogModel.user_id.name,
-			date: dateFormat(jogModel.date, "mm/dd/yyyy"),
+			date: jogModel.date.getMonth() + "/ " + jogModel.date.getDate() + "/" + jogModel.date.getFullYear(),//dateFormat(jogModel.date, "mm/dd/yyyy"),
 			time: jogModel.time,
 			distance: jogModel.distance,
 			weekNo: jogModel.weekNo,
