@@ -11,14 +11,18 @@ module.exports.userlistRead = function(req, res) {
 	else {
 		User.findById(req.payload._id)
 			.exec(function(err, user){
-				if (user.accountType !== 1) {
+				var condition;
+				if (user.accountType !== 1 && user.accountType !== 2) {
 					res.status(401).json({
 					  "message" : "UnauthorizedError: should be admin."
 					});
 				} 
 				else {
+					if(user.accountType === 2){
+						condition = {"accountType": 3};	//managers can only see users
+					}
 					User
-						.find()
+						.find(condition)
 						.exec(function(err, users) {
 							res.status(200).json(users);
 						});
