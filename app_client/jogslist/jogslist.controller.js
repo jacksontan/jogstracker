@@ -125,6 +125,9 @@
 			});
 		vm.disableEditor(jogRecord);
 	};
+	vm.togglePanel = function(e){
+		$(e.currentTarget).next("div").slideToggle();
+	}
 	vm.getJogs();
   }
 

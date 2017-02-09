@@ -1,8 +1,18 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.panel-body .toolbar{
+	height: 25px;
+	padding-right: 10px;
+}
+.panel-body .toolbar  a{
+	margin: 5px;
+}
+form>.row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.panel-heading:hover{
+	cursor: pointer;
 }
