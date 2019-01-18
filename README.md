@@ -1,6 +1,7 @@
 # jogsTracker
 
 A simple demo app that tracks jog records. Application can create, read, update, delete and list all jog records.
+Live at heroku https://jogstracker.herokuapp.com/
 
 ## Running Locally
 
